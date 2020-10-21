@@ -1,0 +1,82 @@
+<?php
+
+?>
+
+ <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        </div>
+    </div>
+  </footer>
+    <!-- END FOOTER -->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    angularjs
+    <script type="text/javascript" src="js/plugins/angular.min.js"></script>
+    materialize js
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    scrollbar
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+     data-tables 
+    <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
+	
+    <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
+    
+    plugins.js - Some Specific JS codes for Plugin Settings
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    custom-script.js - Add your own theme custom JS
+    <script type="text/javascript" src="js/custom-script.js"></script>
+    
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="css/bootstrap.min.css"></script>
+      <script src="js/jquery.dataTables.min.js"></script>
+      <script src="js/dataTables.buttons.min.js"></script>
+      <script src="js/buttons.flash.min.js"></script>
+      <script src="js/pdfmake.min.js"></script>
+      <script src="js/vfs_fonts.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/buttons.html5.min.js"></script>
+      <script src="js/buttons.print.min.js"></script>
+      <script>   $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );</script>
+    <script>
+    $(document).ready(function(){
+      $('.size').on('change',function(){
+         id = $(this).val();
+         var dataAttrVal = $('option:selected', this).attr('data');
+          $.ajax({
+              url: "requests/get_price.php", 
+              method:"post",
+              data :{'id':id},
+              success: function(result)
+              {
+            $('#'+dataAttrVal).html(result);
+               }
+        });
+      }); 
+    });
+    
+    </script>
+    
+
+</body>
+</html>
