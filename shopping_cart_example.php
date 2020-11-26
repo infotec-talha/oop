@@ -1,10 +1,10 @@
 <?php
 
 class Cart {
-    protected $items = array();
+    public $items = array();
 
     public function addItem(Item $item) {
-        $this->items[] = $item;
+        $this->items[$item->id] = $item;
     }
 
     public function getSubTotal() {
@@ -14,11 +14,16 @@ class Cart {
         }
         return $total;
     }
-    
+    public function deleteItem(Item $item) {
+
+		// Need the unique item id:
+		$id = $item->getId();
+                unset($this->items[$id]);
+    }
 }
 
 class Item {
-    protected $id;
+    public $id;
     protected $name;
     protected $type;
     protected $price;
@@ -30,27 +35,34 @@ class Item {
      $this->price = $price;
   }
 
-    public function getName() {
-        return $this->name;
-    }
+   
 public function getPrice() {
         return $this->price;
     }
+public function getId()	{
+		return $this->id;
+	}
    
 }
+
 //$prod1 = new Product(3,"chicken tikka","pizza",250);
 $cart = new Cart();
 $prod1=new Item(3,"chicken tikka","pizza",250);
 $prod2=new Item(5,"chicken fajita","pizza",250);
 $prod3=new Item(6,"chicken burger","sides",500);
+$prod4=new Item(8,"chicken fried rice","rice",500);
 $cart->addItem($prod1);
 $cart->addItem($prod2);
 $cart->addItem($prod3);
+$cart->addItem($prod4);
+$cart->deleteItem($prod3);
+echo '<pre>';
 
-print_r($cart);
+//unset($products);
+//print_r($products);
+//unset($cart->items[1]);
+print_r($cart->items);
 $total=$cart->getSubTotal();
-
-
 echo "<br>";
 echo "Total=$total";
 
